@@ -1,18 +1,11 @@
 const express = require("express");
+const bodyParser = require('body-parser')
+
 const app = express();
 
-app.use('/',(req, res, next) => {
-    console.log("This is logs middleware")
-    next();
-})
+app.use(bodyParser.urlencoded({extended: false}));
 
-app.use('/users',(req, res, next) => {
-    console.log("Users mmiddleware")
-    res.send('<h1>Hey User</h1>');
-})
-
-app.use('/',(req, res, next) => {
-    console.log("I'm another mmiddleware")
+app.use('/', (req, res, next) => {
     res.send('<h1>Hello from Express!</h1>');
 })
 
