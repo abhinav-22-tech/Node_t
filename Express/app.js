@@ -1,17 +1,19 @@
-const http = require("http");
 const express = require("express");
-
 const app = express();
 
-app.use((req, res, next) => {
-    console.log("I'm mmiddleware")
+app.use('/',(req, res, next) => {
+    console.log("This is logs middleware")
     next();
 })
 
-app.use((req, res, next) => {
-    console.log("I'm mmiddleware")
+app.use('/users',(req, res, next) => {
+    console.log("Users mmiddleware")
+    res.send('<h1>Hey User</h1>');
 })
 
-const server = http.createServer(app);
+app.use('/',(req, res, next) => {
+    console.log("I'm another mmiddleware")
+    res.send('<h1>Hello from Express!</h1>');
+})
 
-server.listen(3000);
+app.listen(3000);
