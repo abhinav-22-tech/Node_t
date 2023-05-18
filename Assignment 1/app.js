@@ -1,5 +1,4 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 
 const path = require('path');
 
@@ -12,6 +11,5 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(roots);
 app.use(users);
-
 
 app.listen(3000);
